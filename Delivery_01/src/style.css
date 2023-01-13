@@ -94,3 +94,9 @@ body {
     margin: 10px;
     display: inline-grid;
 }
+
+.grid_elm:hover {
+    background-color: rgba(47, 0, 141, 0.39);
+    border: rgba(0, 255, 255, 0.39) dotted 1px;
+
+}
