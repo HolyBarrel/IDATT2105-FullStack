@@ -4,8 +4,7 @@ html {
 }
 
 body {
-    display: flex;
-    flex-direction: column;
+    display: grid;
     align-items: center;
     text-align: center;
     background-image: url('resources/code.jpg');
@@ -18,85 +17,105 @@ body {
 #header {
     color: #0f0f0f;
     background-color: #d5d5dde0;
-    border-radius: 5px;
+    border-radius: 10px;
     padding-right: 4px;
     padding-left: 4px;
+    margin-left: auto;
 }
 
-#div_text_1 {
+.div_text {
     padding: 3px;
     margin: 3px;
-    border-radius: 5px;
-    width: 70%;
+    border-radius: 10px;
+    width: 99%;
     font-weight: bold;
     color: #d5d5dd;
-    background-color: #000000;
+    background-color: #0f0f0f;
+}
+
+#donate_text {
+    color: red;
 }
 
 #div_menu {
+    width: 99%;
     padding: 5px;
     display: flex;
     flex-direction: inline;
+    align-items: flex-end;
 }
 
 .menu_link {
-    margin: 3px;
+    margin: auto;
     color: #000000;
+    font-weight: bold;
     padding: 4px;
-    border: 1px dotted black;
+    border: 1px dotted #0f0f0f;
     text-decoration: none;
     background-color: #d5d5dd;
+    border-radius: 10px;
 }
 
 .menu_link:hover {
-    background-color: #000000;
-    font-weight: bold;
-    color: #ffffff;
-    font-size: 17px;
+    background-color: #0f0f0f;
+    color: #d5d5dd;
     text-decoration: underline;
 }
 
 #div_logo {
-    background-color: #080808;
+    background-color: #0f0f0f;
     height: 50px;
     width: 60px;
     margin: 10px;
     padding: 3px;
-    border-radius: 20%;
+    border-radius: 10px;
     background-image: url('resources/WWdone.jpg');
     background-repeat: no-repeat;
     background-size: cover;
+    margin-right: auto;
+}
+
+#div_logo:hover {
+    background-color: #d5d5dd;
 }
 
 #div_header {
-    margin: 10px;
-    width: 100%;
-    background-color: #000000;
+    align-items: center;
+    width: 99%;
+    background-color: #0f0f0f;
     display: flex;
     flex-direction: inline;
-    padding: 3px;
-    align-content: center;
-    vertical-align: middle;
+    padding: 6px;
+    border-radius: 10px;
 }
 
 #grid_container {
-    width: 70%;
-    height: 40%;
-    background-color: #080808;
-
+    width: 99%;
 }
 
 .grid_elm {
     width: 70px;
     height: 70px;
     border-radius: 40%;
-    background-color: rgba(0, 255, 255, 0.39);
+    background-color: #00ffff63;
     margin: 10px;
     display: inline-grid;
 }
 
 .grid_elm:hover {
-    background-color: rgba(47, 0, 141, 0.39);
-    border: rgba(0, 255, 255, 0.39) dotted 1px;
+    background-color: #2f008d63;
+    border: #00ffff63 dotted 1px;
 
+}
+
+#footer {
+    background-color: #0f0f0f;
+    border-radius: 10px;
+    margin-top: 15%;
+}
+
+#footer_text {
+    color: #d5d5dd;
+    font-weight: bold;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
