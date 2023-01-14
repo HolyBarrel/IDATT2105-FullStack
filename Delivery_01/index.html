@@ -22,13 +22,26 @@
             <h2>Welcome to WokeWire!</h2>
             The world is becoming a sketchy place. Our society is quietly breaking down.<br>
             This anonymous cult guides individuals deemed qualified towards salvation. <br>
-            We are the resistance against fraudulent wokism apparent in leftist politics. 
+            We are the resistance against fraudulent wokism apparent in politics. 
         </p>
+        <button id="show_btn" onclick="show()">DONATE NOW</button>
+    </div>
+    <div class="div_text" id="div_donate">
+        <p id="donate_text">
+            Please donate to our cult, and we will sacrifice a goat on your behalf. Press the button to donate now!
+        </p>
+        <button id="donate_btn" onclick="donate()">DONATE</button>
+        <p>Donations: <p id="num_donations">0</p></p>
+        <button id="hide_btn" onclick="hide()">HIDE DONATIONS</button>
     </div>
     <div class="div_text">
-        <p id="donate_text">
-            Please donate to our cult, and we will sacrifice a goat on your behalf.
-        </p>
+        <button id="quote_btn" onclick="get_quote()">GET QUOTE</button>
+        <p id="quote_display"></p>
+    </div>
+    <div class="div_text">
+        <h4>Quote history</h4>
+        <ul id="quote_list">
+        </ul>
     </div>
     <div id="grid_container">
         <div class="grid_elm"></div>

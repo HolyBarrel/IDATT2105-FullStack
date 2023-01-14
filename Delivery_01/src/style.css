@@ -15,8 +15,8 @@ body {
 }
 
 #header {
-    color: #0f0f0f;
-    background-color: #d5d5dde0;
+    color: #0f0f0fc9;
+    background-color: #d5d5dd;
     border-radius: 10px;
     padding-right: 4px;
     padding-left: 4px;
@@ -30,7 +30,7 @@ body {
     width: 99%;
     font-weight: bold;
     color: #d5d5dd;
-    background-color: #0f0f0f;
+    background-color: #0f0f0fc9;
 }
 
 #donate_text {
@@ -50,20 +50,20 @@ body {
     color: #000000;
     font-weight: bold;
     padding: 4px;
-    border: 1px dotted #0f0f0f;
+    border: 1px dotted #0f0f0fc9;
     text-decoration: none;
     background-color: #d5d5dd;
     border-radius: 10px;
 }
 
 .menu_link:hover {
-    background-color: #0f0f0f;
+    background-color: #0f0f0fc9;
     color: #d5d5dd;
     text-decoration: underline;
 }
 
 #div_logo {
-    background-color: #0f0f0f;
+    background-color: #0f0f0fc9;
     height: 50px;
     width: 60px;
     margin: 10px;
@@ -82,7 +82,7 @@ body {
 #div_header {
     align-items: center;
     width: 99%;
-    background-color: #0f0f0f;
+    background-color: #0f0f0fc9;
     display: flex;
     flex-direction: inline;
     padding: 6px;
@@ -94,11 +94,11 @@ body {
 }
 
 .grid_elm {
-    width: 70px;
-    height: 70px;
+    width: 17px;
+    height: 17px;
     border-radius: 40%;
     background-color: #00ffff63;
-    margin: 10px;
+    margin: 4%;
     display: inline-grid;
 }
 
@@ -108,8 +108,19 @@ body {
 
 }
 
+#div_donate {
+    display: none;
+}
+
+#quote_list {
+    font-size: 10px;
+    font-style: italic;
+    list-style: none;
+    display: inline;
+}
+
 #footer {
-    background-color: #0f0f0f;
+    background-color: #0f0f0fc9;
     border-radius: 10px;
     margin-top: 15%;
 }
