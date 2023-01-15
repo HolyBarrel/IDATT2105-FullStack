@@ -130,3 +130,14 @@ body {
     font-weight: bold;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
+
+.btn {
+    background-color: #caffed;
+    border-radius: 10px;
+    font-weight: bold;
+    padding: 4px;
+}
+
+.btn:hover {
+    background-color: #d5d5dd;;
+}
