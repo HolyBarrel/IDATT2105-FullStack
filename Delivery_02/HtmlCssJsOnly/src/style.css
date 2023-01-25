@@ -1,0 +1,93 @@
+/*
+    <div id="calc_container">
+        <div id="header_container">
+            <h1>Calculator</h1>
+        </div>
+        <p id="display_field">DISPLAY</p>
+        <div id="input_fields">
+            <!--To be added via JS-->
+            INPUTS
+        </div>
+        <div id="scroll_box">SCROLLBOX</div>
+        <div id="error_display"></div>
+    </div>
+*/
+html {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    font-family: Arial, Helvetica, sans-serif;
+    height: 100%;
+}
+
+#calc_container {
+    background-color: #fff0f0;
+    border: 1px solid black;
+    border-radius: 3px;
+    padding: 30px;
+    width: 50%;
+    min-height: 60%;
+    height: 70%;
+    box-shadow: 1px 2px 1px lightblue;
+}
+
+#header_container {
+
+}
+
+#display_field {
+ 
+}
+
+.action_btn {
+    margin: 1%;
+    width: 22.5%;
+    height: 17.5%;
+    color: #020087;
+    font-weight: bold;
+    font-size: 15px;
+    background-color: #e8e8e8;
+    border-radius: 3px;
+    box-shadow: 1px 2px 1px lightblue;
+}
+
+.action_btn:hover {
+    background-color: #b2feba;
+    box-shadow: none;
+}
+
+#input_fields {
+    display: grid-inline; 
+    min-height: 45%;
+    justify-content: center;
+
+}
+
+#scroll_box {
+    overflow-x: hidden;
+    overflow-y: auto;
+    max-height: 60px;
+
+    text-align: center;
+    font-style: italic;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+}
+
+#error_display {
+
+}
+
+.inner_element {
+    background-color: #bbbbbb;
+    margin: 5px;
+    border-radius: 3px;
+    padding: 5px;
+    height: auto;
+    max-width: 95%;
+    box-shadow: 1px 2px 1px lightblue;
+}
