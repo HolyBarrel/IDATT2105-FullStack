@@ -95,7 +95,15 @@ function compute() {
             prevAnswer = parseFloat(currentFirstNum) * parseFloat(currentSecondNum)
         }
         else if (currentOperator === "/") {
-            prevAnswer = parseFloat(currentFirstNum) / parseFloat(currentSecondNum)
+            if( parseFloat(currentSecondNum) != 0){
+                prevAnswer = parseFloat(currentFirstNum) / parseFloat(currentSecondNum)
+            }
+            else {
+                var display = document.getElementById("display_field")
+                display.innerHTML = "NaN"
+                document.getElementById("error_display").innerHTML = "COULD NOT COMPUTE"
+            }
+            
         }
     }
 
