@@ -98,12 +98,6 @@ function compute() {
             if( parseFloat(currentSecondNum) != 0){
                 prevAnswer = parseFloat(currentFirstNum) / parseFloat(currentSecondNum)
             }
-            else {
-                var display = document.getElementById("display_field")
-                display.innerHTML = "NaN"
-                document.getElementById("error_display").innerHTML = "COULD NOT COMPUTE"
-            }
-            
         }
     }
 
