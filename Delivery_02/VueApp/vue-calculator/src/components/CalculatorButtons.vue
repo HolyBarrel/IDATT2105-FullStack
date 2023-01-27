@@ -55,17 +55,17 @@ export default {
     margin: 1%;
     width: 23%;
     height: 17.5%;
-    color: #3297e9;
+    color: #004984;
     font-weight: bold;
     font-size: 15px;
-    background-color: #000f20;
+    background-color: #f0f0f0;
     border-radius: 3px;
     box-shadow: 1px 2px 1px lightblue;
 }
 
 .action_btn:hover {
-    color: #000f20;
-    background-color: #d6fcda;
+    color: #f0f0f0;
+    background-color: #000000;
 }
 
 #input_fields {

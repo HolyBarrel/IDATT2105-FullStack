@@ -1,3 +1,4 @@
+
 <script setup>
     import calculatorBtns from "../components/CalculatorButtons.vue";
 </script>
@@ -16,15 +17,15 @@ export default {
   },
   methods: {    
     addEquation(equation) {
-     var list = document.getElementById("scroll_box")
-    var list_item = document.createElement("li")
+      var list = document.getElementById("scroll_box");
+      var list_item = document.createElement("li");
     list_item.appendChild(document.createTextNode(equation))
     list.appendChild(list_item)
-    this.setScroll()
+      this.setScroll();
     },
 
     setScroll() {
-    var sb = document.getElementById("scroll_box")
+      var sb = document.getElementById("scroll_box");
 	sb.scrollTop = sb.scrollHeight
     },
 
@@ -77,7 +78,6 @@ export default {
         console.log("sn: " + this.currentSecondNum)
         console.log("pr: " + this.prevAnswer)
         var display = document.getElementById("display_field")
-        //if((parseFloat(this.currentFirstNum) && ((parseFloat(this.currentSecondNum) || this.currentSecondNum == "0") && this.currentOperator != "/"))) {
         if((
         (parseFloat(this.currentFirstNum) || this.currentFirstNum =="0") && 
         (parseFloat(this.currentSecondNum) || (this.currentSecondNum == "0") && this.currentOperator != "/")
@@ -87,8 +87,10 @@ export default {
             display.innerHTML = this.prevAnswer
 
         }
-        else if ((parseFloat(this.currentFirstNum)  || parseFloat(this.currentSecondNum)) && 
-        (this.currentSecondNum != "0" && this.currentFirstNum !="0")) {
+        else if (
+            (parseFloat(this.currentFirstNum)  || parseFloat(this.currentSecondNum)) && 
+            (this.currentSecondNum != "0" && this.currentFirstNum !="0")) 
+        {
             if(parseFloat(this.currentFirstNum)) this.prevAnswer = this.currentFirstNum
             if(parseFloat(this.currentSecondNum)) this.prevAnswer = this.currentSecondNum
             this.addEquation(" = " + this.prevAnswer)
