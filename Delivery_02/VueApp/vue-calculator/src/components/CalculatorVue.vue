@@ -78,13 +78,17 @@ export default {
         console.log("pr: " + this.prevAnswer)
         var display = document.getElementById("display_field")
         //if((parseFloat(this.currentFirstNum) && ((parseFloat(this.currentSecondNum) || this.currentSecondNum == "0") && this.currentOperator != "/"))) {
-        if((parseFloat(this.currentFirstNum) && (parseFloat(this.currentSecondNum) || (this.currentSecondNum == "0") && this.currentOperator != "/"))) {
+        if((
+        (parseFloat(this.currentFirstNum) || this.currentFirstNum =="0") && 
+        (parseFloat(this.currentSecondNum) || (this.currentSecondNum == "0") && this.currentOperator != "/")
+        )) {
 
             this.addEquation(this.currentFirstNum + " " + this.currentOperator + " " + this.currentSecondNum + " = " + this.prevAnswer)
             display.innerHTML = this.prevAnswer
 
         }
-        else if ((parseFloat(this.currentFirstNum)  || parseFloat(this.currentSecondNum)) && this.currentSecondNum != "0") {
+        else if ((parseFloat(this.currentFirstNum)  || parseFloat(this.currentSecondNum)) && 
+        (this.currentSecondNum != "0" && this.currentFirstNum !="0")) {
             if(parseFloat(this.currentFirstNum)) this.prevAnswer = this.currentFirstNum
             if(parseFloat(this.currentSecondNum)) this.prevAnswer = this.currentSecondNum
             this.addEquation(" = " + this.prevAnswer)
