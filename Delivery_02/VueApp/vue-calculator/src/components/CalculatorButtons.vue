@@ -29,7 +29,6 @@ export default {
   },
   methods: {
     getInput(input) {
-        console.log("Clicked")
         this.$emit('buttonClick', input)
         
     }

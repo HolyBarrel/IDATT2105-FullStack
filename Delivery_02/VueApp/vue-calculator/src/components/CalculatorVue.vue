@@ -64,9 +64,7 @@ export default {
                 this.prevAnswer = parseFloat(this.currentFirstNum) * parseFloat(this.currentSecondNum)
             }
             else if (this.currentOperator === "/") {
-                if(this.currentSecondNum != "0"){
-                    this.prevAnswer = parseFloat(this.currentFirstNum) / parseFloat(this.currentSecondNum)
-                }
+                this.prevAnswer = parseFloat(this.currentFirstNum) / parseFloat(this.currentSecondNum)
             }
         }
         this.equals()
@@ -79,22 +77,33 @@ export default {
         console.log("sn: " + this.currentSecondNum)
         console.log("pr: " + this.prevAnswer)
         var display = document.getElementById("display_field")
-        //if((parseFloat(this.prevAnswer) || this.prevAnswer == "0")) {
-        if((parseFloat(this.currentFirstNum) && parseFloat(this.currentSecondNum) 
-        && this.currentFirstNum != "" && this.currentSecondNum != "")) {
+        //if((parseFloat(this.currentFirstNum) && ((parseFloat(this.currentSecondNum) || this.currentSecondNum == "0") && this.currentOperator != "/"))) {
+        if((parseFloat(this.currentFirstNum) && (parseFloat(this.currentSecondNum) || (this.currentSecondNum == "0") && this.currentOperator != "/"))) {
 
             this.addEquation(this.currentFirstNum + " " + this.currentOperator + " " + this.currentSecondNum + " = " + this.prevAnswer)
             display.innerHTML = this.prevAnswer
 
         }
-        else if (parseFloat(this.currentFirstNum)  && this.currentSecondNum != "0") {
-            this.prevAnswer = this.currentFirstNum
+        else if ((parseFloat(this.currentFirstNum)  || parseFloat(this.currentSecondNum)) && this.currentSecondNum != "0") {
+            if(parseFloat(this.currentFirstNum)) this.prevAnswer = this.currentFirstNum
+            if(parseFloat(this.currentSecondNum)) this.prevAnswer = this.currentSecondNum
             this.addEquation(" = " + this.prevAnswer)
             display.innerHTML = this.prevAnswer
         }
         else {
-            document.getElementById("error_display").innerHTML = "COULD NOT COMPUTE"
-            display.innerHTML = "NaN"
+            var msg = ""
+            var placeholder = ""
+            if(this.currentSecondNum === "0" && this.currentOperator == "/")
+            {
+              msg = "Could not divide by zero!"
+              placeholder = "DIV/0!"
+            }
+            else {
+                msg = "Could not compute!"
+                placeholder = "NaN"
+            }
+            document.getElementById("error_display").innerHTML = msg
+            display.innerHTML = placeholder
         }
         
     },
@@ -141,7 +150,7 @@ export default {
     },
     interpret(input){
 
-        if(input === "C") { this.clear()}
+        if(input === "C") {this.clear()}
 
         else if(input === "ANS"){this.answer()}
 
