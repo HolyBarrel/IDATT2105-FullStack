@@ -68,6 +68,12 @@ export default {
     background-color: #000000;
 }
 
+.action_btn:active {
+    scale: 1.1;
+    color: #ff0000;
+    background-color: #000000;
+}
+
 #input_fields {
     display: grid-inline; 
     min-height: 45%;
