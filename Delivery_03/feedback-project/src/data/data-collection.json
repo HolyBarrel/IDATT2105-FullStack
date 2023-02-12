@@ -1,0 +1,67 @@
+{
+  "answer": {
+    "response": "Success"
+  },
+  "collection": [
+    {
+      "name": "MMA",
+      "email": "kks@sksk.no",
+      "message": "jdsjdd",
+      "id": 1
+    },
+    {
+      "name": "My Name Chef",
+      "email": "chef@69.org",
+      "message": "wow it's cool!",
+      "id": 2
+    },
+    {
+      "name": "KLkd",
+      "email": "KKk@slkso.no",
+      "message": "ss2kk",
+      "id": 3
+    },
+    {
+      "name": "Test",
+      "email": "test@test.c",
+      "message": "TEST",
+      "id": 4
+    },
+    {
+      "name": "HHha",
+      "email": "dadad@sksk.nmop",
+      "message": "sksdk",
+      "id": 5
+    },
+    {
+      "name": "Jjsjs",
+      "email": "amssa2s@kdssk.bp",
+      "message": "kaskks",
+      "id": 6
+    },
+    {
+      "name": "Senpai Surya",
+      "email": "example@email.no",
+      "message": "Random message",
+      "id": 7
+    },
+    {
+      "name": "Senpai Surya",
+      "email": "example@email.no",
+      "message": "Random message",
+      "id": 8
+    },
+    {
+      "name": "Senpai Surya",
+      "email": "example@email.no",
+      "message": "Random message",
+      "id": 9
+    },
+    {
+      "name": "J",
+      "email": "Tste@sksk.voq",
+      "message": "msmsd",
+      "id": 10
+    }
+  ]
+}
