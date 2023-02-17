@@ -4,7 +4,7 @@
 describe('Testing the urls', () => {
   it('visits the app root url', () => {
     cy.visit('/')
-    cy.contains('h1', 'CALCULATOR 3000 VUE APP')
+    cy.contains('h1', 'Calculator 3000 Vue App')
   })
 
   it('visits the app calculator url', () => {
