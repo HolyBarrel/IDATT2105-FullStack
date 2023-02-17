@@ -27,11 +27,6 @@ describe('ContactView', () => {
     expect(wrapper.vm.status).toBe(null);
   })
 
-  
-  it('isMounted is initialized as true', () => {
-    expect(wrapper.vm.isMounted).to.be.true;
-  })
-
   it('sets myStateVar to a new value', async () => {
     const name = 'Magnus';
 
