@@ -2,9 +2,19 @@
 
 # feedback-project
 
+## SETUP:
+
+  - Open terminal 
+  - Navigate into project directory
+  - Run ` npm install`   
+
+
+
+History for how the project was initialized:
+
 #### 1. RUN `npm init vue@latest`
 
-## FURTHER SETUP
+## Project initialization specs
 
 ✔ Project name: … <your project>
   
@@ -31,7 +41,7 @@ Done. Now run:
 
   cd `<your project>`
   
- ` npm install`
+ ` npm install`   
   
  ` npm run lint`
   
