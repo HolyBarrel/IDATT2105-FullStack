@@ -6,7 +6,8 @@
   <nav>
     <router-link to="/">Home</router-link> |
     <router-link to="/contact">Contact</router-link> |
-    <router-link to="/calculator">Go to Calculator</router-link>
+    <router-link to="/calculator">Go to Calculator</router-link> |
+    <router-link to="/login">Login</router-link>
   </nav>
   <router-view/>
 </template>

@@ -18,6 +18,11 @@ const router = createRouter({
       path: '/calculator',
       name: 'calculator',
       component: () => import(/* webpackChunkName: "calculator" */ '../views/CalcView.vue')
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: () => import(/* webpackChunkName: "login" */ '../views/LoginView.vue')
     }
   ]
 })
