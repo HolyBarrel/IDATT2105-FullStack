@@ -7,10 +7,22 @@ defineProps({
 })
 </script>
 
+<script>
+  export default {
+      computed: {
+        isLoggedIn() {
+          return this.$store.state.authorized;
+        }
+    }
+  }
+</script>
+
 <template>
   <div class="greetings">
     <h1 class="green">{{ msg }}</h1>
     <h3>Welcome to the Calculator 3000 application!</h3>
+    <div v-show="isLoggedIn">You are logged in, please give us feedback on the calculator!</div>
+    <div v-show="!isLoggedIn">Please log in.</div>
     
   </div>
 </template>

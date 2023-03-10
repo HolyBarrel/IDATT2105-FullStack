@@ -284,12 +284,18 @@ export default {
     mounted() {
       this.updateDisplay();
     },
+
+    computed: {
+      isLoggedIn() {
+        return this.$store.state.authorized;
+      }
+    }
   
 };
 </script>
 
 <template>
-  <div id="calc_container">
+  <div v-if="isLoggedIn" id="calc_container">
     <div class="inner_element" id="header_container">
       <h1 id="headerCalc">CALCULATOR 3000</h1>
     </div>
@@ -305,6 +311,7 @@ export default {
     <div class="inner_element" id="scroll_box"></div>
     <div class="inner_element" id="error_display"></div>
   </div>
+  <div v-if="!isLoggedIn"><p>Please log in.</p></div> <!--TODO fix-->
 </template>
 
 <style scoped>
@@ -383,4 +390,5 @@ export default {
     justify-content: center;
 
 }
+
 </style>
