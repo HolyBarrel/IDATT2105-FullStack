@@ -10,13 +10,13 @@ const apiClient = axios.create({
 })
 
 export default {
-    getData() {
-        return apiClient.get('/collection')
-    },
     postMessage(message){
-        return apiClient.post('/collection', message)
+        return apiClient.post('/users', message)
     },
     getStatus() {
         return apiClient.get('/answer')
+    },
+    getUsers() {
+        return apiClient.get('/users')
     }
 }

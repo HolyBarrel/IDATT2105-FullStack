@@ -2,12 +2,31 @@
   window.addEventListener('load', localStorage.clear())
 </script>
 
+<script>
+import { mapState } from 'vuex';
+import { mapActions } from 'vuex'
+  export default {
+    methods: {
+        ...mapActions(['logUserIn', 'logUserOut']),
+    },
+    computed: {
+        ...mapState({loggedIn: state => state.authorized})
+}
+  }
+</script>
+
 <template>
   <nav>
     <router-link to="/">Home</router-link> |
+
     <router-link to="/contact">Contact</router-link> |
-    <router-link to="/calculator">Go to Calculator</router-link> |
-    <router-link to="/login">Login</router-link>
+    <router-link to="/calculator">Go to Calculator</router-link>
+    <div id="calcWrapper" style="all: unset;" v-if="!loggedIn">
+      | <router-link to="/login">Login</router-link>
+    </div>
+    <div id="calcWrapper" style="all: unset;" v-if="loggedIn">
+      |  <router-link to="/" @click="this.logUserOut()">Log Out</router-link>
+    </div>
   </nav>
   <router-view/>
 </template>

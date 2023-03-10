@@ -3,10 +3,41 @@
     "response": "Success"
   },
   "users": [
-    
-  ]
-  ,
-  "collection": [
-
-  ]
+    {
+      "username": "sdsad",
+      "password": "adssdsasd",
+      "id": 1
+    },
+    {
+      "username": "sfdfdsdfs",
+      "password": "sdfsdfdfsd",
+      "id": 2
+    },
+    {
+      "username": "juhuihiuhhsfdfsdf",
+      "password": "dsffsdfsdfdsf",
+      "id": 3
+    },
+    {
+      "username": "aewa",
+      "password": "aeweaw",
+      "id": 4
+    },
+    {
+      "username": "sadsd",
+      "password": "asdasdsdas",
+      "id": 5
+    },
+    {
+      "username": "sads",
+      "password": "sadas",
+      "id": 6
+    },
+    {
+      "username": "Magnus",
+      "password": "allison",
+      "id": 6
+    }
+  ],
+  "collection": []
 }

@@ -1,36 +1,56 @@
 <script>
-import CollectionService from '@/services/LoginService.js'
+import LoginService from '@/services/LoginService.js'
 
   export default {
     data() {
       return {
         userName: localStorage.getItem('username') || "",
         inputPassword: localStorage.getItem('password') || "",
-        status: null,
+        status: '',
         isButtonDisabled: true,
-        errorMsg: "",
+        errorMsg: '',
         showPassword: false
       }
     },
     methods: {
-      submitForm () {
+      async submitForm () {
 
-        this.$store.dispatch(
-          'createMessage',        
-          {
-            name: this.userName,
-            email: this.inputPassword,
-          }
-        )
-        
-        this.status = this.getStatus()
+        var currentUser = 
+            {
+            username: this.userName,
+            password: this.inputPassword
+            }
+
+        let result = await LoginService.getUsers()
+        let usersData = result.data
+   
+
+        var found = false
+        for(let i = 0; i < usersData.length; i++) {
+            if(currentUser.username === usersData[i].username && currentUser.password === usersData[i].password) {
+                found = true
+                break
+            }
+        }
+
+        console.log(usersData)
+        console.log(found)
+        if(found) {
+            this.$store.dispatch('logUserIn')
+            this.$router.push('/')      
+            this.status =  await this.getStatus()
+        }
+        else {
+            alert("Invalid username and/or password!")
+        }
+
         this.resetFields()
 
       },
       async getStatus() {
         var message = ""
         try {
-            let result = await CollectionService.getStatus();
+            let result = await LoginService.getStatus();
             console.log(result.data.response)
             message = result.data.response
             this.status = message
@@ -53,6 +73,7 @@ import CollectionService from '@/services/LoginService.js'
             this.enableBtn()
             this.errorMsg = ""
         }
+        this.resetMessage()
       },
 
       disableBtn () {
@@ -98,7 +119,6 @@ import CollectionService from '@/services/LoginService.js'
 <template>
     <div class="contactForm">
         <h1>Login form</h1>
-        <h3>Please log in with a registerd user:</h3>
         <form @submit.prevent="submitForm">
             
             <label>Username:</label>
@@ -113,7 +133,7 @@ import CollectionService from '@/services/LoginService.js'
             <input type="submit" id="submitButton" value="Log in" :disabled="isButtonDisabled">
         </form>
         <p v-if="errorMsg != ''" id="excpMessage">{{ errorMsg }}</p>
-        <p id="statusP" v-if="status">{{ status }}</p>
+        <p id="statusP" v-if="status != ''">{{ status }}</p>
     </div>
 </template>
 
