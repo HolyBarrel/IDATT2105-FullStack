@@ -27,7 +27,8 @@ import LoginService from '@/services/LoginService.js'
 
         var found = false
         for(let i = 0; i < usersData.length; i++) {
-            if(currentUser.username === usersData[i].username && currentUser.password === usersData[i].password) {
+          console.log(usersData[i])
+            if(currentUser.username === usersData[i].userName && currentUser.password === usersData[i].userPassword) {
                 found = true
                 break
             }
@@ -38,7 +39,6 @@ import LoginService from '@/services/LoginService.js'
         if(found) {
             this.$store.dispatch('logUserIn')
             this.$router.push('/')      
-            this.status =  await this.getStatus()
         }
         else {
             alert("Invalid username and/or password!")
