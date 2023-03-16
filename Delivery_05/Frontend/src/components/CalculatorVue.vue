@@ -315,7 +315,7 @@ export default {
     <div class="inner_element" id="scroll_box"></div>
     <div class="inner_element" id="error_display"></div>
   </div>
-  <div v-if="!isLoggedIn"><p>Please log in.</p></div> <!--TODO fix-->
+  <div v-if="!isLoggedIn"><p>Please log in.</p></div>
 </template>
 
 <style scoped>
@@ -374,7 +374,7 @@ export default {
     color: #004984;
     font-weight: bold;
     font-size: 15px;
-    background-color: #c5f4ff;
+    background-color: #f4fdff;
     border-radius: 3px;
     box-shadow: 1px 2px 1px rgba(0, 114, 255, 0.5);
 }

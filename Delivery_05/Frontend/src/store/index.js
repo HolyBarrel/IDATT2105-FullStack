@@ -22,7 +22,6 @@ export default createStore({
     },
     authorized: false,
     authorizedId: null
-
   },
   mutations: {
     ADD_CONTACT_MSG(state, payload) {
@@ -98,6 +97,7 @@ export default createStore({
     },
     logUserOut({ commit }) {
       commit('SET_AUTHORIZED', false)
+      commit('SET_AUTHORIZED_ID', null)
     },
     async checkUser({commit}, user) {
       try {
@@ -118,7 +118,5 @@ export default createStore({
       }
       
     }
-  },
-  getters: {
   }
 })

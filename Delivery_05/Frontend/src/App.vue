@@ -10,7 +10,8 @@ import { mapActions } from 'vuex'
         ...mapActions(['logUserOut']),
     },
     computed: {
-        ...mapState({loggedIn: state => state.authorized})
+        ...mapState({loggedIn: state => state.authorized}),
+        ...mapState({loggedInId: state => state.authorizedId})
 }
   }
 </script>
@@ -26,6 +27,7 @@ import { mapActions } from 'vuex'
     </div>
     <div id="calcWrapper" style="all: unset;" v-if="loggedIn">
       |  <router-link to="/" @click="this.logUserOut()">Log Out</router-link>
+          <p>ID: {{ loggedInId }}</p>
     </div>
   </nav>
   <router-view/>
