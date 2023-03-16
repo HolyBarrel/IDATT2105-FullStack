@@ -8,6 +8,7 @@ public class Equation implements Serializable {
   private char operator;
   private double secondNumber;
   private Double result;
+  private Long userId;
 
   public Equation() {
   }
@@ -19,8 +20,6 @@ public class Equation implements Serializable {
   public void setId(long id) {
     this.id = id;
   }
-
-  //TODO: ADD USER FIELD
 
   public double getFirstNumber() {
     return firstNumber;
@@ -52,6 +51,14 @@ public class Equation implements Serializable {
 
   public void setResult(Double result) {
     this.result = result;
+  }
+
+  public Long getUserId() {
+    return userId;
+  }
+
+  public void setUserId(Long userId) {
+    this.userId = userId;
   }
 
   @Override

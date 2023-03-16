@@ -19,20 +19,21 @@ public class CalculatorJDBCRepository implements  CalculatorRepository {
   @Override
   public int save(Equation equation) {
     return jdbcTemplate.update(
-        "INSERT INTO CALC_EQUATIONS (FIRST_NUMBER, OPERATOR, SECOND_NUMBER, RESULT) "
-            + "VALUES(?, ?, ?, ?)",
+        "INSERT INTO CALC_EQUATIONS (FIRST_NUMBER, OPERATOR, SECOND_NUMBER, RESULT, USER_ID) "
+            + "VALUES(?, ?, ?, ?, ?)",
         equation.getFirstNumber(),
         equation.getOperator(),
         equation.getSecondNumber(),
-        equation.getResult());
+        equation.getResult(),
+        equation.getUserId());
   }
 
   @Override
   public int update(Equation equation) {
     return jdbcTemplate.update("UPDATE CALC_EQUATIONS SET "
             + "FIRST_NUMBER=?, OPERATOR=?, SECOND_NUMBER=?, RESULT=? WHERE ID=?",
-        equation.getFirstNumber(), equation.getOperator(), equation.getSecondNumber(), equation.getResult(),
-        equation.getId());
+        equation.getFirstNumber(), equation.getOperator(), equation.getSecondNumber(),
+        equation.getResult(), equation.getId());
   }
 
   @Override

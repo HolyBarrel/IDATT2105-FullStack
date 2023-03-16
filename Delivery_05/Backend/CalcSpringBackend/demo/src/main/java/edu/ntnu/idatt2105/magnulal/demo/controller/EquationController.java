@@ -40,6 +40,7 @@ public class EquationController {
 
       return new ResponseEntity<>(equations, HttpStatus.OK);
     } catch (Exception e) {
+      System.out.println("Error: " + e.getMessage());
       return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
     }
   }
@@ -54,6 +55,7 @@ public class EquationController {
       equation1.setSecondNumber(equation.getSecondNumber());
       equation1.setResult(ArithmeticService.COMPUTE(
           equation.getFirstNumber(), equation.getOperator(), equation.getSecondNumber()));
+      equation1.setUserId(equation.getUserId());
 
       calculatorRepository.save(equation1);
       return new ResponseEntity<>("Equation was created successfully.", HttpStatus.CREATED);

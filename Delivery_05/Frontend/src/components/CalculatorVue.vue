@@ -4,7 +4,8 @@
 <script>
 
 import CalculatorService from '@/services/CalculatorService.js'
-
+import { mapState } from 'vuex';
+     
 export default {
   data() {
     return {
@@ -113,9 +114,10 @@ export default {
             firstNumber: this.currentFirstNum,
             operator: this.currentOperator,
             secondNumber: this.currentSecondNum,
-            result: null
+            result: null, 
+            userId: this.authorizedId
           })
-        this.getData()
+        //this.getData()
         this.update()
       } else {
         this.equals()
@@ -288,7 +290,8 @@ export default {
     computed: {
       isLoggedIn() {
         return this.$store.state.authorized;
-      }
+      },
+      ...mapState({authorizedId: state => state.authorizedId})
     }
   
 };
