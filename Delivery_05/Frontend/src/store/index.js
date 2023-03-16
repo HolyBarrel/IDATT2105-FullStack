@@ -51,8 +51,8 @@ export default createStore({
     }
   },
   actions: {
-    createMessage({ commit }, payload) {
-      CollectionService.postMessage(payload)
+    async createMessage({ commit }, payload) {
+      await CollectionService.postMessage(payload)
         .then(() => {
           commit('ADD_CONTACT_MSG', payload)
         })
@@ -60,8 +60,8 @@ export default createStore({
           alert(err)
         })
     },
-    fetchStatus({ commit }) {
-      CollectionService.getStatus()
+    async fetchStatus({ commit }) {
+      await CollectionService.getStatus()
       .then(response => {
         commit('GET_STATUS', response.data.status)
       })
@@ -69,8 +69,8 @@ export default createStore({
         alert(err)
       })
     },
-    createEquation({ commit }, payload) {
-      CalculatorService.postMessage(payload)
+    async createEquation({ commit }, payload) {
+      await CalculatorService.postMessage(payload)
         .then(() => {
           commit('ADD_EQUATION', payload)
         })
@@ -78,8 +78,8 @@ export default createStore({
           alert(err)
         })
     },
-    fetchEquation({ commit }) {
-      CalculatorService.getData()
+    async fetchEquation({ commit }) {
+      await CalculatorService.getData()
       .then(response => {
         commit('GET_EQUATION', response.data)
       })
@@ -87,8 +87,8 @@ export default createStore({
         alert(err)
       })
     },
-    createUser({ commit }, payload) {
-      LoginService.postMessage(payload)
+    async createUser({ commit }, payload) {
+      await LoginService.postMessage(payload)
         .then(() => {
           commit('ADD_USERS', payload)
         })
@@ -96,15 +96,6 @@ export default createStore({
           alert(err)
         })
     },
-    /*fetchUsers({ commit }) {
-      LoginService.getUsers()
-      .then(response => {
-        commit('GET_USERS', response.data)
-      })
-      .catch(err => {
-        alert(err)
-      })
-    },*/
     logUserOut({ commit }) {
       commit('SET_AUTHORIZED', false)
     },
@@ -121,7 +112,6 @@ export default createStore({
       try {
         const response = await LoginService.getUserId(user);
         commit('SET_AUTHORIZED_ID', response.data)
-        console.log("Current signed in user-id: " + this.state.authorizedId)
         return response.data
       } catch (error) {
         console.log('Error: ' + error)
