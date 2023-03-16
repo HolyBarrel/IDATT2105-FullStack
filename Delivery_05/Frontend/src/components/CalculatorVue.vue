@@ -26,7 +26,7 @@ export default {
         "8",
         "9",
         "/",
-        "*(-1)",
+        "±",
         "0",
         ".",
         "=",
@@ -108,7 +108,8 @@ export default {
         }
       }
 
-      if (this.isCompleteEquation()) { //checks if the current equation is a complete one
+      if (this.isCompleteEquation()) { 
+        //checks if the current equation is a complete one
         this.$store.dispatch('createEquation', 
           {
             firstNumber: this.currentFirstNum,
@@ -228,7 +229,7 @@ export default {
         this.deleteNum();
       } else if (input === "=") {
         this.compute();
-      } else if(input === "*(-1)") {
+      } else if(input === "±") {
         if(this.isCompleteEquation()) {
           this.currentSecondNum *= -1;
 
