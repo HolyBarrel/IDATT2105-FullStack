@@ -17,28 +17,20 @@ import LoginService from '@/services/LoginService.js'
 
         var currentUser = 
             {
-            username: this.userName,
-            password: this.inputPassword
+            userName: this.userName,
+            userPassword: this.inputPassword
             }
 
-        let result = await LoginService.getUsers()
-        let usersData = result.data
-   
+        let result = await LoginService.checkUser(currentUser).then(console.log(currentUser))
+        .catch(error => console.log("Error, could not authenticate: " + error))
+        console.log(result)
+  
+        var found = result
 
-        var found = false
-        for(let i = 0; i < usersData.length; i++) {
-          console.log(usersData[i])
-            if(currentUser.username === usersData[i].userName && currentUser.password === usersData[i].userPassword) {
-                found = true
-                break
-            }
-        }
-
-        console.log(usersData)
-        console.log(found)
         if(found) {
             this.$store.dispatch('logUserIn')
             this.$router.push('/')      
+
         }
         else {
             alert("Invalid username and/or password!")

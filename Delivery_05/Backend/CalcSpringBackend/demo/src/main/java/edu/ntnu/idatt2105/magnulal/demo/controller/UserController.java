@@ -44,7 +44,7 @@ public class UserController {
   }
 
   @PostMapping("/users")
-  public ResponseEntity<String> createUser(@RequestBody User user) {
+  public ResponseEntity<String> createUser(@RequestBody User user) { //TODO: already existing username
     try {
       User user1 = new User();
       user1.setUserId(user.getUserId());
@@ -58,6 +58,23 @@ public class UserController {
     }
   }
 
+  @PostMapping("/users/login")
+  public ResponseEntity<Boolean> verifyUser(@RequestBody User user) {
+    try {
+      List<User> allUsers = userRepository.findAll();
+      if(allUsers.stream().anyMatch(u ->
+          u.getUserName().equals(user.getUserName()) &&
+              u.getUserPassword().equals(user.getUserPassword()))) {
+        return new ResponseEntity<Boolean>(true, HttpStatus.OK);
+      }
+      else {
+        return new ResponseEntity<Boolean>(false, HttpStatus.UNAUTHORIZED);
+      }
+    } catch (Exception e) {
+      return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+  }
+  
   @GetMapping("/users/{id}")
   public ResponseEntity<User> getUserById(@PathVariable("id") long id) {
     User user = userRepository.findById(id);

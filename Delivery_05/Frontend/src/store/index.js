@@ -20,7 +20,8 @@ export default createStore({
       secondNumber: null,
       result: null
     },
-    authorized: false
+    authorized: false,
+    authorizedId: null
 
   },
   mutations: {
@@ -45,7 +46,6 @@ export default createStore({
     SET_AUTHORIZED(state, payload) {
       state.authorized = payload
     }
-    
   },
   actions: {
     createMessage({ commit }, payload) {
@@ -93,7 +93,7 @@ export default createStore({
           alert(err)
         })
     },
-    fetchUsers({ commit }) {
+    /*fetchUsers({ commit }) {
       LoginService.getUsers()
       .then(response => {
         commit('GET_USERS', response.data)
@@ -101,13 +101,22 @@ export default createStore({
       .catch(err => {
         alert(err)
       })
-    },
+    },*/
     logUserIn({ commit }) {
       commit('SET_AUTHORIZED', true)
 
     },
     logUserOut({ commit }) {
       commit('SET_AUTHORIZED', false)
+    },
+    async checkUser({commit}, user) {
+      try {
+        const response = await LoginService.checkUser(user);
+        commit('SET_AUTHORIZED', response)
+        return response
+      } catch (error) {
+        console.log('Error: ' + error)
+      }
     }
   },
   getters: {

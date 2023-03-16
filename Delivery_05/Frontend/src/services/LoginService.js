@@ -10,10 +10,7 @@ const apiClient = axios.create({
 })
 
 export default {
-    getStatus() {
-        return apiClient.get('/answer')
-    },
-    getUsers() {
-        return apiClient.get('/users')
+    checkUser(message){
+        return apiClient.post('/users/login', message)
     }
 }
