@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const apiClient = axios.create({
-    baseURL: 'http://localhost:3000',
+    baseURL: 'http://localhost:8080/api',
     withCredentials: false,
     headers: {
         Accept: 'application/json',
@@ -10,9 +10,9 @@ const apiClient = axios.create({
 })
 
 export default {
-    postMessage(message){
+    /*postMessage(message){
         return apiClient.post('/users', message)
-    },
+    },*/
     getStatus() {
         return apiClient.get('/answer')
     },

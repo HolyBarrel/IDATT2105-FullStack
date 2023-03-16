@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @CrossOrigin(origins = "http://127.0.0.1:5173/")
@@ -31,8 +30,7 @@ public class EquationController {
   CalculatorRepository calculatorRepository;
 
   @GetMapping("/equations")
-  public ResponseEntity<List<Equation>> getAllEquations(
-      @RequestParam(required = false) String equationString) {
+  public ResponseEntity<List<Equation>> getAllEquations() {
     try {
       List<Equation> equations = new ArrayList<Equation>(calculatorRepository.findAll());
 
@@ -87,9 +85,9 @@ public class EquationController {
       update_equation.setResult(equation.getResult());
 
       calculatorRepository.update(update_equation);
-      return new ResponseEntity<>("Tutorial was updated successfully.", HttpStatus.OK);
+      return new ResponseEntity<>("Equation was updated successfully.", HttpStatus.OK);
     } else {
-      return new ResponseEntity<>("Cannot find Tutorial with id=" + id, HttpStatus.NOT_FOUND);
+      return new ResponseEntity<>("Cannot find Equation with id=" + id, HttpStatus.NOT_FOUND);
     }
   }
 
@@ -104,13 +102,13 @@ public class EquationController {
       return new ResponseEntity<>("Equation with id " + id +  " was deleted successfully.",
           HttpStatus.OK);
     } catch (Exception e) {
-      return new ResponseEntity<>("Cannot delete tutorial.",
+      return new ResponseEntity<>("Cannot delete Equation.",
           HttpStatus.INTERNAL_SERVER_ERROR);
     }
   }
 
   @DeleteMapping("/equations")
-  public ResponseEntity<String> deleteAllTutorials() {
+  public ResponseEntity<String> deleteAllEquations() {
     try {
       int rows = calculatorRepository.deleteAll();
       return new ResponseEntity<>("Deleted " + rows + " equation(s) successfully.",
