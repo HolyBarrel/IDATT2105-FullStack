@@ -7,6 +7,7 @@ import edu.ntnu.idatt2105.magnulal.demo.repository.UserRepository;
 import java.util.ArrayList;
 import java.util.List;
 
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -74,7 +75,22 @@ public class UserController {
       return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
     }
   }
-  
+
+  @PostMapping("/users/loggedIn")
+  public ResponseEntity<Integer> returnUserId(@RequestBody User user) {
+    try {
+      List<User> allUsers = userRepository.findAll();
+      Optional<User> found_user = allUsers.stream().filter(u -> u.getUserName().equals(user.getUserName()) &&
+          u.getUserPassword().equals(user.getUserPassword())).findFirst();
+
+      return found_user.map(value -> new ResponseEntity<>(value.getUserId(), HttpStatus.OK))
+          .orElseGet(() -> new ResponseEntity<>(-1, HttpStatus.UNAUTHORIZED));
+
+    } catch (Exception e) {
+      return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+  }
+
   @GetMapping("/users/{id}")
   public ResponseEntity<User> getUserById(@PathVariable("id") long id) {
     User user = userRepository.findById(id);

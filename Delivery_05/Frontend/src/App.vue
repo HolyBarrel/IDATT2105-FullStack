@@ -7,7 +7,7 @@ import { mapState } from 'vuex';
 import { mapActions } from 'vuex'
   export default {
     methods: {
-        ...mapActions(['logUserIn', 'logUserOut']),
+        ...mapActions(['logUserOut']),
     },
     computed: {
         ...mapState({loggedIn: state => state.authorized})

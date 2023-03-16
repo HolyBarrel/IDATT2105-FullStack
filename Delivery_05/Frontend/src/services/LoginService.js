@@ -12,5 +12,8 @@ const apiClient = axios.create({
 export default {
     checkUser(message){
         return apiClient.post('/users/login', message)
+    },
+    getUserId(message){
+        return apiClient.post('/users/loggedIn', message)
     }
 }

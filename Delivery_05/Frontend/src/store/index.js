@@ -45,6 +45,9 @@ export default createStore({
     },
     SET_AUTHORIZED(state, payload) {
       state.authorized = payload
+    },
+    SET_AUTHORIZED_ID(state, payload) {
+      state.authorizedId = payload
     }
   },
   actions: {
@@ -102,10 +105,6 @@ export default createStore({
         alert(err)
       })
     },*/
-    logUserIn({ commit }) {
-      commit('SET_AUTHORIZED', true)
-
-    },
     logUserOut({ commit }) {
       commit('SET_AUTHORIZED', false)
     },
@@ -117,6 +116,17 @@ export default createStore({
       } catch (error) {
         console.log('Error: ' + error)
       }
+    },
+    async fetchUserId({commit}, user) {
+      try {
+        const response = await LoginService.getUserId(user);
+        commit('SET_AUTHORIZED_ID', response.data)
+        console.log("Current signed in user-id: " + this.state.authorizedId)
+        return response.data
+      } catch (error) {
+        console.log('Error: ' + error)
+      }
+      
     }
   },
   getters: {

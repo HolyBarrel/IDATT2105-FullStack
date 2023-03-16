@@ -9,7 +9,7 @@ import LoginService from '@/services/LoginService.js'
         status: '',
         isButtonDisabled: true,
         errorMsg: '',
-        showPassword: false
+        showPassword: false,
       }
     },
     methods: {
@@ -21,15 +21,15 @@ import LoginService from '@/services/LoginService.js'
             userPassword: this.inputPassword
             }
 
-        let result = await LoginService.checkUser(currentUser).then(console.log(currentUser))
+        let result = await this.$store.dispatch('checkUser', currentUser)
         .catch(error => console.log("Error, could not authenticate: " + error))
         console.log(result)
   
         var found = result
 
         if(found) {
-            this.$store.dispatch('logUserIn')
             this.$router.push('/')      
+            await this.$store.dispatch('fetchUserId', currentUser)
 
         }
         else {
