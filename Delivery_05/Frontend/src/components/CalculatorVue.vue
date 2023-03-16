@@ -324,25 +324,26 @@ export default {
   display: grid;
   justify-content: center;
   font-weight: bold;
-  background-color: #444444;
-  border: 1px solid #3d85c6;
+  background-color: #2a2a2a;
+  border: 1px solid #0072ff;
   border-radius: 3px;
   padding: 30px;
   width: 100%;
   min-height: 80%;
   height: 100%;
-  box-shadow: 1px 1px 1px lightblue;
+  box-shadow: 1px 1px 1px rgba(0, 114, 255, 0.5);
 }
 
 #display_field {
-  height: 35px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
 }
 
 #scroll_box {
   overflow-x: hidden;
   overflow-y: auto;
-  max-height: 60px;
-
+  max-height: 80px;
   text-align: center;
   font-style: italic;
   font-weight: bold;
@@ -352,40 +353,41 @@ export default {
 }
 
 #error_display {
-  color: #b60000;
+  color: #ff4d4d;
 }
 
 .inner_element {
   font-weight: bold;
-  background-color: #fafafa;
+  background-color: #FFFFFF;
   margin: 5px;
   border-radius: 3px;
   padding: 5px;
   height: auto;
-  box-shadow: 1px 1px 1px lightblue;
+  box-shadow: 1px 1px 1px rgba(0, 114, 255, 0.5);
 }
 
 .action_btn {
     margin: 1%;
     width: 23%;
+    min-width: 50px;
     height: 17.5%;
     color: #004984;
     font-weight: bold;
     font-size: 15px;
-    background-color: #f0f0f0;
+    background-color: #c5f4ff;
     border-radius: 3px;
-    box-shadow: 1px 2px 1px lightblue;
+    box-shadow: 1px 2px 1px rgba(0, 114, 255, 0.5);
 }
 
 .action_btn:hover {
-    color: #f0f0f0;
-    background-color: #000000;
+    color: #00c8ff;
+    background-color: #333333;
 }
 
 .action_btn:active {
-    scale: 1.1;
-    color: #ff0000;
-    background-color: #000000;
+    transform: scale(1.1);
+    color: #ff4d4d;
+    background-color: #333333;
 }
 
 #input_fields {
