@@ -128,6 +128,7 @@ export default {
       }
       this.reset();
     },
+    
     async handleUserHistory() {
         const userEquations = await this.$store.dispatch('fetchUserData', this.authorizedId)
         this.userHistory = userEquations
@@ -203,6 +204,7 @@ export default {
       }
       this.updateDisplay();
     },
+
     updateDisplay() {
       var errorDiv = document.getElementById("error_display")
       if(errorDiv) {
@@ -224,6 +226,7 @@ export default {
 
       }
     },
+
     interpret(input) {
       if (input === "C") {
         this.clear();
@@ -254,6 +257,7 @@ export default {
       return (parseFloat(this.currentFirstNum) || this.currentFirstNum == "0") &&
           (parseFloat(this.currentSecondNum) || (this.currentSecondNum == "0" && this.currentOperator != "/"))
     },
+
     isPartialEquation() {
       return (parseFloat(this.currentFirstNum) || parseFloat(this.currentSecondNum)) &&
         this.currentSecondNum != "0" && this.currentFirstNum != "0"
@@ -274,18 +278,23 @@ export default {
       currentFirstNum(fn) {
         localStorage.setItem('currentFirstNum', fn);
       },
+
       currentOperator(opr) {
         localStorage.setItem('currentOperator', opr);
       },
+
       currentSecondNum(sn) {
         localStorage.setItem('currentSecondNum', sn);
       },
+
       prevAnswer(prevAns) {
         localStorage.setItem('prevAnswer', prevAns);
       },
+
       scrollBox(content) {
         localStorage.setItem('scrollbox', content);
       },
+
       authorizedId(newValue, oldValue) {
         if (newValue !== oldValue) {
           localStorage.setItem('scrollText', '');
@@ -303,6 +312,7 @@ export default {
       isLoggedIn() {
         return this.$store.state.authorized;
       },
+
       ...mapState({authorizedId: state => state.authorizedId})
     }
   
