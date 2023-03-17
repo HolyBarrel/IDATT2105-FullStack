@@ -15,5 +15,8 @@ export default {
     },
     postMessage(message){
         return apiClient.post('/equations', message)
+    },
+    getUserData(userId){
+        return apiClient.post('/equations/user/' + userId)
     }
 }

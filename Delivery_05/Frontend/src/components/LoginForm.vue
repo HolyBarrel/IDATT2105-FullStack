@@ -23,8 +23,7 @@ import LoginService from '@/services/LoginService.js'
 
         let result = await this.$store.dispatch('checkUser', currentUser)
         .catch(error => console.log("Error, could not authenticate: " + error))
-        console.log(result)
-  
+
         var found = result
 
         if(found) {
@@ -43,7 +42,6 @@ import LoginService from '@/services/LoginService.js'
         var message = ""
         try {
             let result = await LoginService.getStatus();
-            console.log(result.data.response)
             message = result.data.response
             this.status = message
             this.disableBtn()

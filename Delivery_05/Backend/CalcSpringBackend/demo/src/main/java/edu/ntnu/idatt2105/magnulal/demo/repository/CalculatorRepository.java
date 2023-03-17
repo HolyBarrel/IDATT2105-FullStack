@@ -14,5 +14,7 @@ public interface CalculatorRepository {
 
   List<Equation> findAll();
 
+  List<Equation> findByUserId(long userId);
+
   int deleteAll();
 }

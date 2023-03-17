@@ -35,7 +35,8 @@ export default {
       currentOperator: localStorage.getItem('currentOperator') || "",
       currentSecondNum: localStorage.getItem('currentSecondNum') || "",
       prevAnswer: localStorage.getItem('prevAnswer') || "",
-      scrollText: localStorage.getItem('scrollText') || ""
+      scrollText: localStorage.getItem('scrollText') || "",
+      userHistory: null
     };
   },
   methods: {
@@ -81,7 +82,7 @@ export default {
         }
     },
 
-    compute() {
+    async compute() {
       document.getElementById("error_display").innerHTML = "";
 
       if (
@@ -110,7 +111,7 @@ export default {
 
       if (this.isCompleteEquation()) { 
         //checks if the current equation is a complete one
-        this.$store.dispatch('createEquation', 
+        await this.$store.dispatch('createEquation', 
           {
             firstNumber: this.currentFirstNum,
             operator: this.currentOperator,
@@ -118,14 +119,19 @@ export default {
             result: null, 
             userId: this.authorizedId
           })
-        //this.getData()
+          await this.handleUserHistory()
         this.update()
+
       } else {
         this.equals()
         this.updateDisplay()
       }
-  
       this.reset();
+    },
+    async handleUserHistory() {
+        const userEquations = await this.$store.dispatch('fetchUserData', this.authorizedId)
+        this.userHistory = userEquations
+
     },
 
     equals() {
@@ -166,8 +172,6 @@ export default {
             var display = document.getElementById("display_field");
             display.innerHTML = this.prevAnswer;
       }
-     
-
     },
 
     answer() {
@@ -258,7 +262,7 @@ export default {
     appendTextToStorage(equation) {
       var prevData = localStorage.getItem('scrollText')
       if(!prevData) {
-         localStorage.setItem('scrollText', equation);
+         localStorage.setItem('scrollText', equation); //TODO: fix cross session history
       } 
       else {
         localStorage.setItem('scrollText', prevData + "<br>" + equation);
@@ -282,10 +286,17 @@ export default {
       scrollBox(content) {
         localStorage.setItem('scrollbox', content);
       },
-
+      authorizedId(newValue, oldValue) {
+        if (newValue !== oldValue) {
+          localStorage.setItem('scrollText', '');
+        }
+     }
     },
     mounted() {
       this.updateDisplay();
+      if(this.authorizedId != null) {
+        this.handleUserHistory()
+      }
     },
 
     computed: {
@@ -312,10 +323,15 @@ export default {
         </button>
       </div>
     </div>
+    <div class="inner_element">Session history:</div>
     <div class="inner_element" id="scroll_box"></div>
-    <div class="inner_element" id="error_display"></div>
+    <div class="inner_element" id="error_display"></div> 
+    <div class="inner_element">User history for user # {{ this.authorizedId }}: </div>
+    <div class="inner_element" v-html="userHistory"></div>
   </div>
   <div v-if="!isLoggedIn"><p>Please log in.</p></div>
+  <br>
+  
 </template>
 
 <style scoped>

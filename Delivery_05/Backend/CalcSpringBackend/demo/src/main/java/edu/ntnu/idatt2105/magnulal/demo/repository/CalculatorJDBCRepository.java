@@ -53,9 +53,16 @@ public class CalculatorJDBCRepository implements  CalculatorRepository {
         BeanPropertyRowMapper.newInstance(Equation.class));
   }
 
+
+  @Override
+  public List<Equation> findByUserId(long userId) {
+    return jdbcTemplate.query("SELECT * FROM CALC_EQUATIONS WHERE USER_ID=?",
+        BeanPropertyRowMapper.newInstance(Equation.class), userId);
+  }
+
   @Override
   public int deleteById(Long id) {
-    return jdbcTemplate.update("DELETE FROM CALC_EQUATIONS WHERE id=?", id);
+    return jdbcTemplate.update("DELETE FROM CALC_EQUATIONS WHERE ID=?", id);
   }
 
   @Override

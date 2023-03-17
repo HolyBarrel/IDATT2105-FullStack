@@ -21,7 +21,8 @@ export default createStore({
       result: null
     },
     authorized: false,
-    authorizedId: null
+    authorizedId: null,
+    userData: null
   },
   mutations: {
     ADD_CONTACT_MSG(state, payload) {
@@ -47,6 +48,9 @@ export default createStore({
     },
     SET_AUTHORIZED_ID(state, payload) {
       state.authorizedId = payload
+    },
+    SET_USER_DATA(state, payload) {
+      state.userData = payload
     }
   },
   actions: {
@@ -116,7 +120,16 @@ export default createStore({
       } catch (error) {
         console.log('Error: ' + error)
       }
-      
-    }
+    },
+    async fetchUserData({commit}, userId) {
+      try {
+        const response = await CalculatorService.getUserData(userId);
+        commit('SET_USER_DATA', response.data)
+        return response.data
+      } catch (error) {
+        console.log('Error: ' + error)
+      }
+    },
+
   }
 })

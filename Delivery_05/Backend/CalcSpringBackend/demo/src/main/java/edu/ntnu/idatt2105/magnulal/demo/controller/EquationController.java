@@ -8,6 +8,7 @@ import edu.ntnu.idatt2105.magnulal.demo.repository.CalculatorRepository;
 import java.util.ArrayList;
 import java.util.List;
 
+import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,7 +22,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@CrossOrigin(origins = "http://127.0.0.1:5173/")
+@CrossOrigin(origins = "http://127.0.0.1:5174/")
 @RestController
 @RequestMapping("/api")
 public class EquationController {
@@ -70,6 +71,30 @@ public class EquationController {
 
     if (equation != null) {
       return new ResponseEntity<>(equation, HttpStatus.OK);
+    } else {
+      return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+  }
+
+  @PostMapping("/equations/user/{userId}")
+  public ResponseEntity<String> getEquationByUserId(@PathVariable("userId") long userId) {
+    List<Equation> equations = calculatorRepository.findByUserId(userId);
+    List<String> equationStrings = new ArrayList<>();
+    if(equations.size() <= 10) {
+      equationStrings = equations.stream().map(e -> e.toString() + "<br>")
+          .collect(Collectors.toList());
+    } else {
+      equationStrings = equations.stream().skip(equations.size() - 10)
+          .map(e -> e.toString() + "<br>").collect(Collectors.toList());
+    }
+    StringBuilder sb = new StringBuilder();
+    for (String equation : equationStrings
+    ) {
+      sb.append(equation);
+    }
+
+    if (equationStrings != null) {
+      return new ResponseEntity<>(sb.toString(), HttpStatus.OK);
     } else {
       return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }

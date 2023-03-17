@@ -31,8 +31,7 @@ import CollectionService from '@/services/CollectionService.js'
       async getStatus() {
         var message = ""
         try {
-            let result = await CollectionService.getStatus();
-            console.log(result.data.response)
+            let result = await CollectionService.getStatus()
             message = result.data.response
             this.status = message
             this.disableBtn()
