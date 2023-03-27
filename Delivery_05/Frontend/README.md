@@ -77,41 +77,28 @@ Done. Now run:
   
   ### UNIT TESTING
   
-  configure 'package.json' to include (in 'scripts:' section): 
-  
-  `"test:unit": "vitest --environment jsdom --root src/",`
-  
-  `npm run test:unit`
+  `npm run test`
   
   Could add unit testing coverage: 
-  `npm i -D @vitest/coverage-c8`
+   `npm run test:coverage`
   
-  'package.json' to include (in 'scripts:' section): 
-  `"test:coverage": "vitest run --coverage --environment jsdom", `
-  
-  `npm run test:coverage`
 
   
   ### CYPRESS
   
-  In 'cypress.config.js':
-  Redirected Cypress to target :  `baseUrl: 'http://127.0.0.1:5173/'`
+  Cypress must be run manually as dev since it is recommended:
   
-  To open cypress and watch tests run live:
-  `npx cypress open`
+  1. Be sure to run the server backend
   
+  2. `npm run test:e2e:dev`
   
-  
-  
+
   
   ## AUTO_GENERATED: 
 ## Recommended IDE Setup
 
 [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
 
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
 
 ## Project Setup
 
@@ -131,10 +118,9 @@ npm run dev
 npm run build
 ```
 
-### Run Unit Tests with [Vitest](https://vitest.dev/)
-
+### Run Unit Tests with [jest]
 ```sh
-npm run test:unit
+npm run test
 ```
 
 ### Run End-to-End Tests with [Cypress](https://www.cypress.io/)
